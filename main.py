@@ -20,7 +20,6 @@ with tempfile.NamedTemporaryFile() as f:
     vectorstore = Chroma.from_documents(documents, embeddings)
 
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-
 qa_chain = ConversationalRetrievalChain.from_llm(
     OpenAI(model_name="gpt-3.5-turbo", temperature=0.3), vectorstore.as_retriever(), memory=memory
 )
