@@ -1,3 +1,4 @@
+"Command line chatbot example using the Tchibo coffee machine manual."
 import tempfile
 import requests
 from langchain.embeddings.openai import OpenAIEmbeddings
