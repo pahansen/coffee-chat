@@ -161,3 +161,4 @@ cython_debug/
 articles/*
 anleitung.pdf
 .chroma
+chroma_db
