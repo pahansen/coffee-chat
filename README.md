@@ -5,5 +5,5 @@ The bot will only use the information provided in the document and drop a little
 
 The file `tchibo_search.ipynb` contains a custom example how to use the OpenAI API to build a chain of commands to prep and retrieve documents and answer questions based on the content.
 
-In `main.py` the whole chain was implemented as a command line tool using the Conversational Retrieval QA chain from Langchain. Obviously, this is the prefered approach because it speeds up development due to a lot of abstractions already implemented to achieve the same result.
+In `main.py` the whole chain was implemented as a command line tool using the Conversational Retrieval QA chain from Langchain and the Luminous LLM from Aleph Alpha.
 
