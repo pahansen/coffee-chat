@@ -1,10 +1,10 @@
 "Command line chatbot example using the Tchibo coffee machine manual."
 import tempfile
 import requests
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings.aleph_alpha import AlephAlphaAsymmetricSemanticEmbedding
 from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.llms import OpenAI
+from langchain.llms import AlephAlpha
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders import PyPDFLoader
 from langchain.memory import ConversationBufferMemory
@@ -14,7 +14,7 @@ def coffee_chat(
     document_url: str = "https://www.tchibo.ch/newmedia/document/b0faa2baaf1abf23/anleitung.pdf",
     create_db: bool = False,
 ):
-    embeddings = OpenAIEmbeddings()
+    embeddings = AlephAlphaAsymmetricSemanticEmbedding()
     if create_db:
         response = requests.get(document_url, timeout=5)
         with tempfile.NamedTemporaryFile() as temp_file:
@@ -39,7 +39,7 @@ def coffee_chat(
         output_key="answer",
     )
     qa_chain = ConversationalRetrievalChain.from_llm(
-        OpenAI(model_name="gpt-3.5-turbo", temperature=0.3),
+        AlephAlpha(model="luminous-supreme-control", temperature=0.3, maximum_tokens=128),
         vectorstore.as_retriever(),
         memory=memory,
         return_source_documents=True,
